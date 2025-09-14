@@ -580,20 +580,20 @@ function App() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="mb-8"
                 >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white" style={{ lineHeight: '1.4', paddingBottom: '0.5rem' }}>
-                    <span className="block mb-2">Transforming Ideas</span>
-                    <span className="block text-ocean-200">into Reality</span>
-                  </h1>
+                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white" style={{ lineHeight: '1.4', paddingBottom: '0.5rem' }}>
+                     <span className="block mb-2">Transforming Ideas</span>
+                     <span className="block text-ocean-200">into Reality</span>
+                   </h1>
                 </motion.div>
                 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed"
-                >
-                  We deliver websites in 48 hours and provide comprehensive web development, mobile app development, and digital solutions for businesses and students.
-                </motion.p>
+                 <motion.p
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 0.8, delay: 0.6 }}
+                   className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed"
+                 >
+                   Professional web development and digital solutions
+                 </motion.p>
                 
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -757,7 +757,7 @@ function App() {
             className="text-center mb-3"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
-              Lightning Fast Delivery & Live Example
+              Lightning Fast Delivery
             </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               We deliver simple websites and make them live within 48 hours! See this very website as proof.
@@ -805,96 +805,6 @@ function App() {
             ))}
           </div>
 
-          {/* Live Example Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-16"
-          >
-            <div className="text-center mb-3">
-              <h3 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
-                Live Example: This Website
-              </h3>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                This very website was built and made live within 48 hours!
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 items-center mt-12">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <span className="text-3xl">🌊</span>
-                  <h4 className="text-2xl font-bold text-white">Sea Waves Solutions</h4>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-ocean-300">⚡</span>
-                    <span className="text-white/90">Built in 48 hours</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-ocean-300">🚀</span>
-                    <span className="text-white/90">React + TypeScript + Tailwind</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-ocean-300">📱</span>
-                    <span className="text-white/90">Fully responsive design</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-ocean-300">✨</span>
-                    <span className="text-white/90">Modern animations & effects</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-ocean-300">🔧</span>
-                    <span className="text-white/90">Contact forms & navigation</span>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8"
-              >
-                <h4 className="text-xl font-bold text-white mb-4">What You Get in 48 Hours:</h4>
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">Complete website design & development</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">Mobile-responsive layout</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">Contact forms & functionality</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">SEO optimization</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">Hosting setup & deployment</span>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <span className="text-ocean-300 mt-1">✓</span>
-                    <span className="text-white/90">Domain configuration</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -976,59 +886,6 @@ function App() {
         </div>
       </section>
 
-      {/* Best Project Center Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 ocean-gradient">
-              #1 Best Project Center in Kumbakonam
-            </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Recognized as the leading college project center, we provide comprehensive project guidance, 
-              internship programs, and real-world experience for CSE, IT, and Engineering students.
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Best College Project Center",
-                description: "Top-rated project center with 100% success rate in academic projects",
-                icon: "🏆"
-              },
-              {
-                title: "Expert Project Guidance",
-                description: "Professional mentorship for final year and mini projects",
-                icon: "👨‍💼"
-              },
-              {
-                title: "Industry-Standard Projects",
-                description: "Real-world projects that enhance your portfolio and skills",
-                icon: "💼"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 text-center"
-              >
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                <p className="text-white/90">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Student Internship Section */}
       <section id="internship" className="py-20 px-4 bg-gradient-to-br from-ocean-900/50 to-deep-900/50">
@@ -1045,9 +902,9 @@ function App() {
                 <div className="flex flex-col items-center space-y-2">
                   <div className="flex flex-col items-center space-y-1">
                     <div className="relative inline-block">
-                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
-                        #1 Best Project Center - Student Internship & College Projects
-                      </h2>
+                       <h2 className="text-4xl md:text-5xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+                         Student Internship & College Projects
+                       </h2>
                       <div className="absolute -top-1 -right-1 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
                         FOR STUDENTS
                       </div>
@@ -1056,9 +913,9 @@ function App() {
                 </div>
               </div>
             </div>
-            <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8">
-              Join the #1 best project center and internship program in Kumbakonam! Work on real-world projects with the best college project center. Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
-            </p>
+             <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8">
+               Join our internship program! Work on real-world projects with professional guidance. Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
+             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 mt-12">
@@ -1134,7 +991,7 @@ function App() {
             viewport={{ once: true }}
             className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 mb-6"
           >
-            <h3 className="text-3xl font-bold text-white mb-8 text-center" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>Why Choose Our Best Project Center & Internship Program?</h3>
+             <h3 className="text-3xl font-bold text-white mb-8 text-center" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>Why Choose Our Internship Program?</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: "🏆", title: "Industry Experience", desc: "Work on real client projects" },
