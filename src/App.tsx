@@ -547,7 +547,7 @@ function App() {
 
       {/* Hero Section */}
       <main>
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
         {/* Animated Background Layers */}
         <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/30 via-ocean-700/20 to-ocean-800/15"></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-deep-900/50 via-transparent to-ocean-800/30"></div>
@@ -560,7 +560,7 @@ function App() {
           <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-ocean-300/25 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-7xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-7xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -568,7 +568,7 @@ function App() {
             className="relative"
           >
             {/* Main Content Card */}
-            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-8 md:p-16 relative overflow-hidden">
+            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
               {/* Shimmer Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer"></div>
               
@@ -580,7 +580,7 @@ function App() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="mb-8"
                 >
-                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white" style={{ lineHeight: '1.4', paddingBottom: '0.5rem' }}>
+                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-white" style={{ lineHeight: '1.2' }}>
                      <span className="block mb-2">Transforming Ideas</span>
                      <span className="block text-ocean-200">into Reality</span>
                    </h1>
@@ -590,7 +590,7 @@ function App() {
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ duration: 0.8, delay: 0.6 }}
-                   className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed"
+                   className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed"
                  >
                    Professional web development and digital solutions
                  </motion.p>
