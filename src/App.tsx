@@ -560,7 +560,7 @@ function App() {
           <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-ocean-300/25 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-7xl mx-auto w-full">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -568,7 +568,7 @@ function App() {
             className="relative"
           >
             {/* Main Content Card */}
-            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
+            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden max-w-4xl mx-auto">
               {/* Shimmer Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer"></div>
               
@@ -614,7 +614,7 @@ function App() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
-                  className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+                  className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-2xl mx-auto"
                 >
                   <button 
                     onClick={() => scrollToSection('contact')}
