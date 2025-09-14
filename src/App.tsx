@@ -899,28 +899,24 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-6 pb-6"
           >
-            <div className="relative mb-6 overflow-visible">
-              <div className="flex flex-col items-center py-4 overflow-visible">
-                <div className="flex flex-col items-center space-y-2">
-                  <div className="flex flex-col items-center space-y-1">
-                    <div className="relative inline-block">
-                       <h2 className="text-3xl md:text-4xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
-                         Student Internship & College Projects
-                       </h2>
-                      <div className="absolute -top-1 -right-1 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
-                        FOR STUDENTS
-                      </div>
-                    </div>
+            <div className="relative mb-4">
+              <div className="flex flex-col items-center">
+                <div className="flex items-center justify-center space-x-3 mb-2">
+                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
+                    Student Internship & College Projects
+                  </h2>
+                  <div className="bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                    FOR STUDENTS
                   </div>
                 </div>
               </div>
             </div>
-             <p className="text-lg text-white/90 max-w-3xl mx-auto mb-6">
+             <p className="text-lg text-white/90 max-w-3xl mx-auto mb-4">
                Join our internship program! Work on real-world projects with professional guidance. Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
              </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 mt-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 mt-6">
             {[
               {
                 title: "Web Development Internship",
