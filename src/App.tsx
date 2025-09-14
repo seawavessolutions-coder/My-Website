@@ -421,7 +421,7 @@ function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'deep-glass' : 'bg-transparent'
       }`} role="navigation" aria-label="Main navigation">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo and Company Name */}
             <div className="flex items-center space-x-3 flex-shrink-0">
@@ -652,19 +652,19 @@ function App() {
 
       {/* About Section */}
       <section id="about" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-12 text-center"
+            className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-8 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
               About Our Expertise
             </h2>
-            <div className="max-w-4xl mx-auto mb-6">
-              <p className="text-xl text-white/90">
+            <div className="max-w-3xl mx-auto mb-6">
+              <p className="text-lg text-white/90">
                 We specialize in transforming innovative business ideas into reality through cutting-edge web development, 
                 mobile applications, and comprehensive digital solutions. Our expertise spans from enterprise-level applications to comprehensive student development programs.
               </p>
@@ -750,7 +750,7 @@ function App() {
 
       {/* Speed Advantage Section */}
       <section id="speed" className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -758,15 +758,15 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-3"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '1.6', paddingBottom: '0.5rem' }}>
               Lightning Fast Delivery
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
               We deliver simple websites and make them live within 48 hours! See this very website as proof.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
             {[
               {
                 title: "48-Hour Delivery",
@@ -813,7 +813,7 @@ function App() {
 
       {/* Services Section */}
       <section id="services" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -821,15 +821,15 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
               Our Services
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
               Comprehensive digital solutions tailored to your business needs
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
             {[
               {
                 icon: Globe,
@@ -891,7 +891,7 @@ function App() {
 
       {/* Student Internship Section */}
       <section id="internship" className="py-20 px-4 bg-gradient-to-br from-ocean-900/50 to-deep-900/50">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -904,7 +904,7 @@ function App() {
                 <div className="flex flex-col items-center space-y-2">
                   <div className="flex flex-col items-center space-y-1">
                     <div className="relative inline-block">
-                       <h2 className="text-4xl md:text-5xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+                       <h2 className="text-3xl md:text-4xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
                          Student Internship & College Projects
                        </h2>
                       <div className="absolute -top-1 -right-1 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
@@ -915,12 +915,12 @@ function App() {
                 </div>
               </div>
             </div>
-             <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8">
+             <p className="text-lg text-white/90 max-w-3xl mx-auto mb-6">
                Join our internship program! Work on real-world projects with professional guidance. Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
              </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 mt-8">
             {[
               {
                 title: "Web Development Internship",
@@ -1015,7 +1015,7 @@ function App() {
 
       {/* Why Choose Us Section */}
       <section id="whyus" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1023,15 +1023,15 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
               Why Choose Us
                 </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
               Our commitment to excellence and professional development approach
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {[
               {
                 title: "48-Hour Delivery",
@@ -1268,7 +1268,7 @@ function App() {
 
       {/* Quality Challenge Section */}
       <section id="quality" className="py-20 px-4 bg-gradient-to-br from-ocean-900/30 to-deep-900/30">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1277,14 +1277,14 @@ function App() {
             className="text-center mb-6 pb-6"
           >
             <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
                 Quality Challenge
             </h2>
               <div className="absolute -top-2 -right-2 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
                 NEW!
               </div>
             </div>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-6">
               We're so confident in our work quality that we challenge you to find a defect in this website!
             </p>
             
@@ -1293,7 +1293,7 @@ function App() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 max-w-4xl mx-auto"
+              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 max-w-3xl mx-auto"
             >
               <div className="flex items-center justify-center space-x-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-full flex items-center justify-center">
@@ -1340,7 +1340,7 @@ function App() {
 
       {/* FAQ Section */}
       <section id="faq" className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1348,10 +1348,10 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
               Common questions about our services and development process
             </p>
           </motion.div>
@@ -1394,7 +1394,7 @@ function App() {
 
       {/* Contact & Location Section */}
       <section id="contact" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1402,24 +1402,24 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '1.8', paddingBottom: '0.5rem' }}>
               Get In Touch
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
               Ready to transform your business? Let's discuss your digital transformation journey.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-8"
+              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6"
             >
-              <h3 className="text-2xl font-bold text-white mb-8 text-center">Send us a Message</h3>
+              <h3 className="text-xl font-bold text-white mb-6 text-center">Send us a Message</h3>
               
               <form 
                 className="space-y-6"
