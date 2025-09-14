@@ -31,7 +31,7 @@ function App() {
     service: '',
     message: ''
   })
-  const [formErrors, setFormErrors] = useState({})
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
   const [showChallengePopup, setShowChallengePopup] = useState(false)
@@ -64,7 +64,7 @@ function App() {
       timeoutId = setTimeout(() => {
         // Only detect active section if not manually scrolling
         if (!isManualScroll) {
-          const sections = ['home', 'about', 'services', 'speed', 'example', 'quality', 'whyus', 'faq', 'contact']
+          const sections = ['home', 'about', 'speed', 'services', 'internship', 'whyus', 'portfolio', 'quality', 'faq', 'contact']
           const scrollPosition = window.scrollY + 150
           
           for (let i = sections.length - 1; i >= 0; i--) {
@@ -95,11 +95,12 @@ function App() {
     const sectionMap: { [key: string]: string } = {
       'home': 'home',
       'about': 'about',
-      'services': 'services',
       'speed': 'speed',
-      'example': 'example',
-      'quality': 'quality',
+      'services': 'services',
+      'internship': 'internship',
       'whyus': 'whyus',
+      'portfolio': 'portfolio',
+      'quality': 'quality',
       'faq': 'faq',
       'contact': 'contact'
     }
@@ -124,7 +125,7 @@ function App() {
   }
 
   const validateForm = () => {
-    const errors = {}
+    const errors: { [key: string]: string } = {}
     
     if (!formData.name.trim()) {
       errors.name = 'Name is required'
@@ -148,17 +149,17 @@ function App() {
     return Object.keys(errors).length === 0
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
     
     // Clear error when user starts typing
-    if (formErrors[name]) {
+    if (formErrors[name as keyof typeof formErrors]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }))
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!validateForm()) {
@@ -215,7 +216,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white/80"
+              className="text-white/90"
             >
               Loading your digital experience...
             </motion.p>
@@ -234,7 +235,7 @@ function App() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="bg-gradient-to-br from-ocean-800/95 to-turquoise-800/95 backdrop-blur-xl border-2 border-ocean-400/60 rounded-2xl p-6 w-full max-w-sm sm:max-w-md md:max-w-lg relative overflow-hidden shadow-2xl mt-8 mb-4"
+            className="bg-gradient-to-br from-ocean-800/95 to-ocean-900/95 backdrop-blur-xl border-2 border-ocean-400/60 rounded-2xl p-6 w-full max-w-sm sm:max-w-md md:max-w-lg relative overflow-hidden shadow-2xl mt-8 mb-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -247,7 +248,7 @@ function App() {
 
             {/* Welcome Header */}
             <div className="text-center mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-ocean-700 via-turquoise-600 to-foam-500 rounded-lg flex items-center justify-center shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:shadow-3xl hover:scale-110 border border-ocean-400/40 mx-auto mb-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-ocean-700 via-ocean-600 to-ocean-500 rounded-lg flex items-center justify-center shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:shadow-3xl hover:scale-110 border border-ocean-400/40 mx-auto mb-3">
                 {/* Coding Sea Waves Icon */}
                 <div className="relative w-8 h-8 flex items-center justify-center">
                   {/* Wave 1 - Main Power Wave */}
@@ -281,7 +282,7 @@ function App() {
                 </div>
                 
                 {/* Code Energy Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-ocean-400/20 via-turquoise-400/20 to-foam-400/20 rounded-lg animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-ocean-400/20 via-ocean-400/20 to-ocean-400/20 rounded-lg animate-pulse"></div>
                 
                 {/* Data Flow Ripples */}
                 <div className="absolute inset-0 border border-white/30 rounded-lg animate-ping" style={{ animationDuration: '2s' }}></div>
@@ -293,8 +294,8 @@ function App() {
               <h2 className="text-2xl font-bold text-white mb-3 ocean-gradient">
                 Welcome to Sea Waves Solutions!
               </h2>
-              <div className="bg-gradient-to-r from-turquoise-500/30 to-ocean-500/30 rounded-xl p-3 border border-turquoise-400/40">
-                <p className="text-turquoise-200 font-bold text-sm">
+              <div className="bg-gradient-to-r from-ocean-500/30 to-ocean-600/30 rounded-xl p-3 border border-ocean-400/40">
+                <p className="text-ocean-200 font-bold text-sm">
                   ⚡ This entire website was built and made live in just 48 hours!
                 </p>
               </div>
@@ -313,53 +314,53 @@ function App() {
                 
                 <div className="space-y-2">
                   <h4 className="text-white font-medium text-sm">Look for:</h4>
-                  <ul className="space-y-2 text-white/80 text-sm">
+                  <ul className="space-y-2 text-white/90 text-sm">
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-turquoise-400 rounded-full mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-ocean-400 rounded-full mr-3 flex-shrink-0"></span>
                       Broken links or buttons
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-turquoise-400 rounded-full mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-ocean-400 rounded-full mr-3 flex-shrink-0"></span>
                       Layout issues on different devices
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-turquoise-400 rounded-full mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-ocean-400 rounded-full mr-3 flex-shrink-0"></span>
                       Performance or loading problems
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-turquoise-400 rounded-full mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-ocean-400 rounded-full mr-3 flex-shrink-0"></span>
                       Visual inconsistencies or bugs
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-turquoise-500/20 to-ocean-500/20 rounded-xl p-4 border border-turquoise-400/30">
+              <div className="bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-xl p-4 border border-ocean-400/30">
                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <span className="w-7 h-7 bg-turquoise-400 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">🎁</span>
+                  <span className="w-7 h-7 bg-ocean-400 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">🎁</span>
                   If You Find One
                 </h3>
                 <ul className="space-y-2 text-white/90 text-sm">
                   <li className="flex items-center">
-                    <span className="text-turquoise-400 mr-3 flex-shrink-0">✓</span>
+                    <span className="text-ocean-300 mr-3 flex-shrink-0">✓</span>
                     Contact us with details
                   </li>
                   <li className="flex items-center">
-                    <span className="text-turquoise-400 mr-3 flex-shrink-0">✓</span>
+                    <span className="text-ocean-300 mr-3 flex-shrink-0">✓</span>
                     We'll fix it within 24 hours
                   </li>
                   <li className="flex items-center">
-                    <span className="text-turquoise-400 mr-3 flex-shrink-0">✓</span>
+                    <span className="text-ocean-300 mr-3 flex-shrink-0">✓</span>
                     You get 10% off your project
                   </li>
                   <li className="flex items-center">
-                    <span className="text-turquoise-400 mr-3 flex-shrink-0">✓</span>
+                    <span className="text-ocean-300 mr-3 flex-shrink-0">✓</span>
                     Free consultation for your business
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-ocean-500/30 to-turquoise-500/30 rounded-xl p-3 border border-ocean-400/40">
+              <div className="bg-gradient-to-r from-ocean-500/30 to-ocean-600/30 rounded-xl p-3 border border-ocean-400/40">
                 <p className="text-center text-ocean-200 font-semibold text-sm">
                   💡 If you can't find any defects, imagine the quality we'll deliver for your project in just 48 hours!
                 </p>
@@ -367,19 +368,19 @@ function App() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col gap-3 mt-6">
+            <div className="flex flex-col gap-3 mt-12">
               <button
                 onClick={() => {
                   setShowChallengePopup(false)
                   scrollToSection('quality')
                 }}
-                className="w-full bg-gradient-to-r from-ocean-500 to-turquoise-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-ocean-600 hover:to-turquoise-600 transition-all duration-300 transform hover:scale-105 text-sm shadow-lg"
+                className="w-full bg-gradient-to-r from-ocean-600 to-ocean-700 text-white py-3 px-6 rounded-xl font-semibold hover:from-ocean-700 hover:to-ocean-800 transition-all duration-300 transform hover:scale-105 text-sm shadow-xl hover:shadow-2xl"
               >
                 Accept Challenge
               </button>
               <button
                 onClick={() => setShowChallengePopup(false)}
-                className="w-full bg-white/15 text-white py-3 px-4 rounded-xl font-semibold hover:bg-white/25 transition-all duration-300 border border-white/30 text-sm"
+                className="w-full bg-white/15 text-white py-3 px-6 rounded-xl font-semibold hover:bg-white/25 transition-all duration-300 border border-white/30 text-sm shadow-lg hover:shadow-xl"
               >
                 Explore Website First
               </button>
@@ -391,7 +392,7 @@ function App() {
       {/* Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 w-full h-1 bg-ocean-900/20 z-50">
         <motion.div
-          className="h-full bg-gradient-to-r from-ocean-400 via-turquoise-400 to-foam-400"
+          className="h-full bg-gradient-to-r from-ocean-400 via-ocean-500 to-ocean-600"
           style={{ width: `${scrollProgress}%` }}
           transition={{ duration: 0.1 }}
         />
@@ -400,7 +401,7 @@ function App() {
       {/* Section Indicators */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
         <div className="flex flex-col space-y-4">
-          {['home', 'about', 'services', 'internship', 'speed', 'example', 'quality', 'whyus', 'faq', 'contact'].map((section) => (
+          {['home', 'about', 'speed', 'services', 'internship', 'whyus', 'portfolio', 'quality', 'faq', 'contact'].map((section) => (
             <button
               key={section}
               onClick={() => scrollToSection(section)}
@@ -417,12 +418,12 @@ function App() {
       {/* Navigation Bar */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'deep-glass' : 'bg-transparent'
-      }`}>
+      }`} role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo and Company Name */}
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-ocean-700 via-turquoise-600 to-foam-500 rounded-lg flex items-center justify-center shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:shadow-3xl hover:scale-110 border border-ocean-400/40">
+            <div className="flex items-center space-x-3 flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-ocean-700 via-ocean-600 to-ocean-500 rounded-lg flex items-center justify-center shadow-2xl relative overflow-hidden group cursor-pointer transition-all duration-500 hover:shadow-3xl hover:scale-110 border border-ocean-400/40">
                 {/* Coding Sea Waves Icon */}
                 <div className="relative w-8 h-8 flex items-center justify-center">
                   {/* Wave 1 - Main Power Wave */}
@@ -456,7 +457,7 @@ function App() {
                 </div>
                 
                 {/* Code Energy Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-ocean-400/20 via-turquoise-400/20 to-foam-400/20 rounded-lg animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-ocean-400/20 via-ocean-400/20 to-ocean-400/20 rounded-lg animate-pulse"></div>
                 
                 {/* Data Flow Ripples */}
                 <div className="absolute inset-0 border border-white/30 rounded-lg animate-ping" style={{ animationDuration: '2s' }}></div>
@@ -465,21 +466,20 @@ function App() {
                 {/* Unstoppable Code Processing Aura */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">Sea Waves Solutions</h1>
-                <p className="text-xs text-ocean-300">One Stop Digital Solutions</p>
+              <div className="min-w-0 flex-shrink-0">
+                <h1 className="text-lg font-bold text-white whitespace-nowrap">Sea Waves Solutions</h1>
+                <p className="text-xs text-ocean-200 whitespace-nowrap">One Stop Digital Solutions</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-shrink">
               {[
                 { name: 'Home', section: 'home' },
                 { name: 'About', section: 'about' },
                 { name: 'Services', section: 'services' },
-                { name: 'Internship', section: 'internship', highlight: true },
-                { name: 'Speed', section: 'speed' },
-                { name: 'Example', section: 'example' },
+                { name: 'Internship', section: 'internship' },
+                { name: 'Speed & Example', section: 'speed' },
                 { name: 'Quality', section: 'quality' },
                 { name: 'Why Us', section: 'whyus' },
                 { name: 'FAQ', section: 'faq' },
@@ -488,26 +488,20 @@ function App() {
               <button 
                   key={item.name}
                   onClick={() => scrollToSection(item.section)}
-                  className={`transition-all duration-300 relative group px-4 py-2 rounded-lg ${
-                    item.highlight 
-                      ? 'bg-gradient-to-r from-ocean-500/20 to-turquoise-500/20 text-white border border-ocean-400/30 hover:from-ocean-500/30 hover:to-turquoise-500/30' 
-                      : 'text-ocean-200 hover:text-ocean-400 hover:bg-white/10'
-                  }`}
+                  className="transition-all duration-300 relative group px-3 py-2 rounded-lg text-ocean-200 hover:text-ocean-300 hover:bg-white/10 text-sm"
                 >
                   <span className="text-sm font-medium">{item.name}</span>
-                  <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                    item.highlight ? 'w-full bg-turquoise-400' : 'w-0 bg-ocean-400'
-                  }`}></span>
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-ocean-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
               ))}
             </div>
 
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-ocean-300 transition-colors"
+                className="text-white hover:text-ocean-200 transition-colors"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -520,16 +514,15 @@ function App() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden deep-glass rounded-lg mt-2 p-4"
+              className="lg:hidden deep-glass rounded-lg mt-2 p-4"
             >
               <div className="flex flex-col space-y-3">
             {[
               { name: 'Home', section: 'home' },
               { name: 'About', section: 'about' },
               { name: 'Services', section: 'services' },
-              { name: 'Internship', section: 'internship', highlight: true },
-              { name: 'Speed', section: 'speed' },
-              { name: 'Example', section: 'example' },
+              { name: 'Internship', section: 'internship' },
+              { name: 'Speed & Example', section: 'speed' },
               { name: 'Quality', section: 'quality' },
               { name: 'Why Us', section: 'whyus' },
               { name: 'FAQ', section: 'faq' },
@@ -541,11 +534,7 @@ function App() {
                       scrollToSection(item.section);
                       setIsMenuOpen(false);
                     }}
-                    className={`transition-colors text-left py-3 px-4 rounded-lg font-medium ${
-                      item.highlight 
-                        ? 'bg-gradient-to-r from-ocean-500/20 to-turquoise-500/20 text-white border border-ocean-400/30' 
-                        : 'text-ocean-200 hover:text-ocean-400 hover:bg-white/10'
-                    }`}
+                    className="transition-colors text-left py-3 px-4 rounded-lg font-medium text-ocean-200 hover:text-ocean-300 hover:bg-white/10"
                   >
                     {item.name}
                 </button>
@@ -557,17 +546,18 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <main>
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         {/* Animated Background Layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-ocean-500/20 via-turquoise-500/20 to-foam-500/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-tl from-deep-900/30 via-transparent to-ocean-800/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/30 via-ocean-700/20 to-ocean-800/15"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-deep-900/50 via-transparent to-ocean-800/30"></div>
         
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-ocean-300/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-turquoise-300/15 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
-          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-foam-300/25 rounded-full blur-xl animate-float" style={{animationDelay: '4s'}}></div>
-          <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-coral-300/20 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-ocean-400/25 rounded-full blur-xl animate-float"></div>
+          <div className="absolute top-40 right-20 w-32 h-32 bg-ocean-400/25 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-ocean-500/25 rounded-full blur-xl animate-float" style={{animationDelay: '4s'}}></div>
+          <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-ocean-300/25 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-7xl mx-auto">
@@ -578,7 +568,7 @@ function App() {
             className="relative"
           >
             {/* Main Content Card */}
-            <div className="ocean-glass rounded-3xl p-8 md:p-16 relative overflow-hidden">
+            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-8 md:p-16 relative overflow-hidden">
               {/* Shimmer Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer"></div>
               
@@ -590,9 +580,9 @@ function App() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="mb-8"
                 >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white" style={{ lineHeight: '1.2' }}>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 text-white" style={{ lineHeight: '1.4', paddingBottom: '0.5rem' }}>
                     <span className="block mb-2">Transforming Ideas</span>
-                    <span className="block text-ocean-300">into Reality</span>
+                    <span className="block text-ocean-200">into Reality</span>
                   </h1>
                 </motion.div>
                 
@@ -609,7 +599,7 @@ function App() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  className="bg-gradient-to-r from-ocean-500/20 to-turquoise-500/20 border border-ocean-400/30 rounded-2xl p-6 mb-12 max-w-2xl mx-auto"
+                  className="bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 border border-ocean-400/30 rounded-2xl p-6 mb-6 max-w-2xl mx-auto"
                 >
                   <div className="flex items-center justify-center space-x-3 mb-2">
                     <span className="text-2xl">⚡</span>
@@ -656,6 +646,7 @@ function App() {
           <ChevronDown className="text-white/60" size={24} />
         </motion.div>
       </section>
+      </main>
 
       {/* About Section */}
       <section id="about" className="py-20 px-4">
@@ -665,32 +656,32 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="ocean-glass rounded-3xl p-12 text-center"
+            className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               About Our Expertise
             </h2>
-            <div className="max-w-4xl mx-auto mb-12">
-              <p className="text-xl text-white/80">
+            <div className="max-w-4xl mx-auto mb-6">
+              <p className="text-xl text-white/90">
                 We specialize in transforming innovative business ideas into reality through cutting-edge web development, 
                 mobile applications, and comprehensive digital solutions. Our expertise spans from enterprise-level applications to comprehensive student development programs.
               </p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="ocean-glass rounded-2xl p-6 float-element">
-                <Code className="text-ocean-300 mx-auto mb-4" size={48} />
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 float-element">
+                <Code className="text-ocean-200 mx-auto mb-4" size={48} />
                 <h3 className="text-xl font-semibold wave-gradient mb-2">Web Development</h3>
-                <p className="text-white/70">Modern, responsive websites built with cutting-edge technologies</p>
+                <p className="text-white/90">Modern, responsive websites built with cutting-edge technologies</p>
               </div>
-              <div className="ocean-glass rounded-2xl p-6 float-element" style={{animationDelay: '0.5s'}}>
-                <Palette className="text-turquoise-300 mx-auto mb-4" size={48} />
+              <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 float-element" style={{animationDelay: '0.5s'}}>
+                <Palette className="text-ocean-300 mx-auto mb-4" size={48} />
                 <h3 className="text-xl font-semibold wave-gradient mb-2">UI/UX Design</h3>
-                <p className="text-white/70">Beautiful, intuitive designs that enhance user experience</p>
+                <p className="text-white/90">Beautiful, intuitive designs that enhance user experience</p>
               </div>
-              <div className="ocean-glass rounded-2xl p-6 float-element" style={{animationDelay: '1s'}}>
-                <Briefcase className="text-foam-300 mx-auto mb-4" size={48} />
+              <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 float-element" style={{animationDelay: '1s'}}>
+                <Briefcase className="text-ocean-300 mx-auto mb-4" size={48} />
                 <h3 className="text-xl font-semibold wave-gradient mb-2">Consulting</h3>
-                <p className="text-white/70">Strategic guidance for your digital transformation journey</p>
+                <p className="text-white/90">Strategic guidance for your digital transformation journey</p>
               </div>
             </div>
           </motion.div>
@@ -705,17 +696,17 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-3"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
               Trusted by Businesses
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Our expertise and certifications ensure professional delivery
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
             {[
               {
                 title: "MERN Stack Certified",
@@ -744,11 +735,11 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-2xl p-6 text-center float-element"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 text-center float-element"
               >
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-white/70 text-sm">{item.description}</p>
+                <p className="text-white/90 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -763,17 +754,17 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-3"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 ocean-gradient">
-              Lightning Fast Delivery
+            <h2 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
+              Lightning Fast Delivery & Live Example
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              We deliver simple websites and make them live within 48 hours!
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              We deliver simple websites and make them live within 48 hours! See this very website as proof.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
               {
                 title: "48-Hour Delivery",
@@ -800,7 +791,7 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-2xl p-8 text-center float-element relative overflow-hidden"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 text-center float-element relative overflow-hidden"
               >
                 <div className="absolute top-4 right-4">
                   <span className="bg-ocean-400 text-white px-3 py-1 rounded-full text-xs font-bold">
@@ -809,105 +800,104 @@ function App() {
                 </div>
                 <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-white/80">{item.description}</p>
+                <p className="text-white/90">{item.description}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Live Example Section */}
-      <section id="example" className="py-16 px-4 bg-gradient-to-br from-ocean-900/50 to-deep-900/50">
-        <div className="max-w-6xl mx-auto">
+          {/* Live Example Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mt-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 ocean-gradient">
-              Live Example: This Website
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              This very website was built and made live within 48 hours!
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="ocean-glass rounded-2xl p-8"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <span className="text-3xl">🌊</span>
-                <h3 className="text-2xl font-bold text-white">Sea Waves Solutions</h3>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <span className="text-ocean-400">⚡</span>
-                  <span className="text-white/90">Built in 48 hours</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-ocean-400">🚀</span>
-                  <span className="text-white/90">React + TypeScript + Tailwind</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-ocean-400">📱</span>
-                  <span className="text-white/90">Fully responsive design</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-ocean-400">✨</span>
-                  <span className="text-white/90">Modern animations & effects</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <span className="text-ocean-400">🔧</span>
-                  <span className="text-white/90">Contact forms & navigation</span>
-                </div>
-              </div>
-            </motion.div>
+            <div className="text-center mb-3">
+              <h3 className="text-3xl md:text-4xl font-bold mb-1 ocean-gradient" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>
+                Live Example: This Website
+              </h3>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                This very website was built and made live within 48 hours!
+              </p>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="ocean-glass rounded-2xl p-8"
-            >
-              <h3 className="text-xl font-bold text-white mb-4">What You Get in 48 Hours:</h3>
-              <div className="space-y-3">
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">Complete website design & development</span>
+            <div className="grid md:grid-cols-2 gap-8 items-center mt-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8"
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <span className="text-3xl">🌊</span>
+                  <h4 className="text-2xl font-bold text-white">Sea Waves Solutions</h4>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">Mobile-responsive layout</span>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-ocean-300">⚡</span>
+                    <span className="text-white/90">Built in 48 hours</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-ocean-300">🚀</span>
+                    <span className="text-white/90">React + TypeScript + Tailwind</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-ocean-300">📱</span>
+                    <span className="text-white/90">Fully responsive design</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-ocean-300">✨</span>
+                    <span className="text-white/90">Modern animations & effects</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-ocean-300">🔧</span>
+                    <span className="text-white/90">Contact forms & navigation</span>
+                  </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">Contact forms & functionality</span>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8"
+              >
+                <h4 className="text-xl font-bold text-white mb-4">What You Get in 48 Hours:</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">Complete website design & development</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">Mobile-responsive layout</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">Contact forms & functionality</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">SEO optimization</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">Hosting setup & deployment</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-ocean-300 mt-1">✓</span>
+                    <span className="text-white/90">Domain configuration</span>
+                  </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">SEO optimization</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">Hosting setup & deployment</span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <span className="text-turquoise-400 mt-1">✓</span>
-                  <span className="text-white/90">Domain configuration</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
+
 
       {/* Services Section */}
       <section id="services" className="py-20 px-4">
@@ -917,53 +907,53 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               Our Services
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Comprehensive digital solutions tailored to your business needs
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
             {[
               {
                 icon: Globe,
                 title: "Business Websites",
                 description: "Professional, responsive websites built with cutting-edge technologies for business growth",
-                color: "from-ocean-500 to-turquoise-500"
+                color: "from-ocean-600 to-ocean-700"
               },
               {
                 icon: Briefcase,
                 title: "Enterprise Solutions",
                 description: "Complete digital transformation from concept to deployment for business excellence",
-                color: "from-turquoise-500 to-foam-500"
+                color: "from-ocean-600 to-ocean-700"
               },
               {
                 icon: Smartphone,
                 title: "Mobile Applications",
                 description: "Native and cross-platform mobile apps for iOS and Android with modern UI/UX",
-                color: "from-foam-500 to-coral-500"
+                color: "from-ocean-600 to-ocean-700"
               },
               {
                 icon: Palette,
                 title: "Logo Design",
                 description: "Creative and professional logo designs that represent your brand identity",
-                color: "from-coral-500 to-ocean-500"
+                color: "from-ocean-600 to-ocean-700"
               },
               {
                 icon: Code,
                 title: "Student Programs",
                 description: "Hands-on internship experience with real-world projects and industry mentorship",
-                color: "from-ocean-500 to-turquoise-500"
+                color: "from-ocean-600 to-ocean-700"
               },
               {
                 icon: Globe,
                 title: "E-commerce Solutions",
                 description: "Complete online stores with payment integration, inventory management, and analytics",
-                color: "from-turquoise-500 to-foam-500"
+                color: "from-ocean-600 to-ocean-700"
               }
             ].map((service, index) => (
               <motion.div
@@ -973,13 +963,67 @@ function App() {
                 transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.4) }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="ocean-glass rounded-2xl p-8 text-center group cursor-pointer wave-element"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 text-center group cursor-pointer wave-element"
               >
                 <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${service.color} flex items-center justify-center`}>
                   <service.icon className="text-white" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-4">{service.title}</h3>
-                <p className="text-white/70">{service.description}</p>
+                <p className="text-white/90">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Best Project Center Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 ocean-gradient">
+              #1 Best Project Center in Kumbakonam
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Recognized as the leading college project center, we provide comprehensive project guidance, 
+              internship programs, and real-world experience for CSE, IT, and Engineering students.
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Best College Project Center",
+                description: "Top-rated project center with 100% success rate in academic projects",
+                icon: "🏆"
+              },
+              {
+                title: "Expert Project Guidance",
+                description: "Professional mentorship for final year and mini projects",
+                icon: "👨‍💼"
+              },
+              {
+                title: "Industry-Standard Projects",
+                description: "Real-world projects that enhance your portfolio and skills",
+                icon: "💼"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 text-center"
+              >
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
+                <p className="text-white/90">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -987,27 +1031,37 @@ function App() {
       </section>
 
       {/* Student Internship Section */}
-      <section id="internship" className="py-20 px-4 bg-gradient-to-br from-turquoise-900/50 to-ocean-900/50">
+      <section id="internship" className="py-20 px-4 bg-gradient-to-br from-ocean-900/50 to-deep-900/50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
-                Student Internship & College Projects
-              </h2>
-              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-turquoise-400 to-ocean-400 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">FOR STUDENTS</div>
+            <div className="relative mb-6 overflow-visible">
+              <div className="flex flex-col items-center py-4 overflow-visible">
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="flex flex-col items-center space-y-1">
+                    <div className="relative inline-block">
+                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight ocean-gradient text-center" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
+                        #1 Best Project Center - Student Internship & College Projects
+                      </h2>
+                      <div className="absolute -top-1 -right-1 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                        FOR STUDENTS
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-xl text-white/80 max-w-4xl mx-auto mb-8">
-              Join our internship program and work on real-world projects! Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
+            <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8">
+              Join the #1 best project center and internship program in Kumbakonam! Work on real-world projects with the best college project center. Perfect for CSE, IT, and Engineering students looking for practical experience in web development, mobile apps, and software engineering.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 mt-12">
             {[
               {
                 title: "Web Development Internship",
@@ -1040,19 +1094,19 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-2xl p-8 hover:scale-105 transition-transform duration-300"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 hover:scale-105 transition-transform duration-300"
               >
                 <div className="text-5xl mb-4 text-center">{internship.icon}</div>
                 <h3 className="text-2xl font-bold text-white mb-4 text-center">{internship.title}</h3>
-                <p className="text-white/80 mb-6 text-center">{internship.description}</p>
+                <p className="text-white/90 mb-6 text-center">{internship.description}</p>
                 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between">
-                    <span className="text-ocean-300 font-medium">Duration:</span>
+                    <span className="text-ocean-200 font-medium">Duration:</span>
                     <span className="text-white font-semibold">{internship.duration}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-ocean-300 font-medium">Projects:</span>
+                    <span className="text-ocean-200 font-medium">Projects:</span>
                     <span className="text-white font-semibold">{internship.projects}</span>
                   </div>
                 </div>
@@ -1061,16 +1115,13 @@ function App() {
                   <h4 className="text-white font-semibold mb-3">Skills You'll Learn:</h4>
                   <div className="flex flex-wrap gap-2">
                     {internship.skills.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="bg-turquoise-500/20 text-turquoise-300 px-3 py-1 rounded-full text-sm">
+                      <span key={skillIndex} className="bg-ocean-500/20 text-ocean-300 px-3 py-1 rounded-full text-sm">
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-turquoise-500 to-ocean-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-turquoise-600 hover:to-ocean-600 transition-all duration-300">
-                  Apply for Internship
-                </button>
               </motion.div>
             ))}
           </div>
@@ -1081,9 +1132,9 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="ocean-glass rounded-2xl p-8 mb-12"
+            className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 mb-6"
           >
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">Why Choose Our Internship Program?</h3>
+            <h3 className="text-3xl font-bold text-white mb-8 text-center" style={{ lineHeight: '2.0', paddingBottom: '0.5rem' }}>Why Choose Our Best Project Center & Internship Program?</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: "🏆", title: "Industry Experience", desc: "Work on real client projects" },
@@ -1094,7 +1145,7 @@ function App() {
                 <div key={index} className="text-center">
                   <div className="text-4xl mb-3">{benefit.icon}</div>
                   <h4 className="text-xl font-bold text-white mb-2">{benefit.title}</h4>
-                  <p className="text-white/80 text-sm">{benefit.desc}</p>
+                  <p className="text-white/90 text-sm">{benefit.desc}</p>
                 </div>
               ))}
             </div>
@@ -1111,17 +1162,17 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               Why Choose Us
                 </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Our commitment to excellence and professional development approach
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {[
               {
                 title: "48-Hour Delivery",
@@ -1160,11 +1211,11 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-2xl p-6 float-element text-center"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 float-element text-center"
               >
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-semibold text-white mb-4">{item.title}</h3>
-                <p className="text-white/80 leading-relaxed">{item.description}</p>
+                <p className="text-white/90 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -1179,12 +1230,12 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               Our Capabilities
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Interactive showcase of our technical expertise and development skills
             </p>
           </motion.div>
@@ -1241,8 +1292,8 @@ function App() {
                   onClick={() => setSelectedCapability(index)}
                   className={`w-full p-4 rounded-xl text-left transition-all duration-300 ${
                     selectedCapability === index
-                      ? 'ocean-glass border-2 border-ocean-400'
-                      : 'deep-glass hover:ocean-glass'
+                      ? 'ocean-glass shadow-2xl hover:shadow-3xl border-2 border-ocean-400'
+                      : 'deep-glass hover:ocean-glass shadow-2xl hover:shadow-3xl'
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -1251,7 +1302,7 @@ function App() {
                     <div className="text-2xl">{capability.icon}</div>
                     <div>
                       <h3 className="text-lg font-semibold text-white">{capability.title}</h3>
-                      <p className="text-white/70 text-sm">{capability.description}</p>
+                      <p className="text-white/90 text-sm">{capability.description}</p>
                 </div>
                   </div>
                 </motion.button>
@@ -1264,7 +1315,7 @@ function App() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="ocean-glass rounded-2xl p-8"
+              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8"
             >
               {(() => {
                 const capability = [
@@ -1318,7 +1369,7 @@ function App() {
                       <div className="text-4xl">{capability.icon}</div>
                       <div>
                         <h3 className="text-2xl font-bold text-white">{capability.title}</h3>
-                        <p className="text-white/80">{capability.description}</p>
+                        <p className="text-white/90">{capability.description}</p>
                       </div>
                 </div>
 
@@ -1327,7 +1378,7 @@ function App() {
                         <h4 className="text-lg font-semibold text-white mb-3">Technologies We Use</h4>
                         <div className="flex flex-wrap gap-2">
                           {capability.technologies.map((tech, index) => (
-                            <span key={index} className="bg-ocean-500/20 text-ocean-300 px-3 py-1 rounded-full text-sm">
+                            <span key={index} className="bg-ocean-500/20 text-ocean-200 px-3 py-1 rounded-full text-sm">
                               {tech}
                             </span>
                           ))}
@@ -1338,8 +1389,8 @@ function App() {
                         <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
                         <ul className="space-y-2">
                           {capability.features.map((feature, index) => (
-                            <li key={index} className="flex items-center text-white/80">
-                              <svg className="w-4 h-4 text-ocean-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <li key={index} className="flex items-center text-white/90">
+                              <svg className="w-4 h-4 text-ocean-300 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                               </svg>
                               {feature}
@@ -1364,17 +1415,17 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
             <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
                 Quality Challenge
             </h2>
-              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-turquoise-400 to-ocean-400 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-ocean-400 to-ocean-500 text-white px-3 py-1 rounded-full text-sm font-bold animate-pulse">
                 NEW!
               </div>
             </div>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
               We're so confident in our work quality that we challenge you to find a defect in this website!
             </p>
             
@@ -1383,10 +1434,10 @@ function App() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="ocean-glass rounded-2xl p-8 max-w-4xl mx-auto"
+              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-8 max-w-4xl mx-auto"
             >
               <div className="flex items-center justify-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-ocean-400 to-turquoise-400 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-ocean-400 to-ocean-500 rounded-full flex items-center justify-center">
                   <span className="text-2xl">🔍</span>
                 </div>
                 <h3 className="text-2xl font-bold text-white">Find a Defect Challenge</h3>
@@ -1394,8 +1445,8 @@ function App() {
               
               <div className="grid md:grid-cols-2 gap-8 text-left">
                 <div>
-                  <h4 className="text-lg font-semibold text-ocean-300 mb-4">What to Look For:</h4>
-                  <ul className="space-y-2 text-white/80">
+                  <h4 className="text-lg font-semibold text-ocean-200 mb-4">What to Look For:</h4>
+                  <ul className="space-y-2 text-white/90">
                     <li>• Broken links or buttons</li>
                     <li>• Layout issues on different devices</li>
                     <li>• Slow loading or performance problems</li>
@@ -1406,8 +1457,8 @@ function App() {
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold text-turquoise-300 mb-4">If You Find One:</h4>
-                  <ul className="space-y-2 text-white/80">
+                  <h4 className="text-lg font-semibold text-ocean-300 mb-4">If You Find One:</h4>
+                  <ul className="space-y-2 text-white/90">
                     <li>• Contact us with details</li>
                     <li>• We'll fix it within 24 hours</li>
                     <li>• You get 10% off your project</li>
@@ -1417,7 +1468,7 @@ function App() {
                 </div>
               </div>
               
-              <div className="mt-8 p-4 bg-gradient-to-r from-ocean-500/20 to-turquoise-500/20 rounded-lg border border-ocean-400/30">
+              <div className="mt-8 p-4 bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 rounded-lg border border-ocean-400/30">
                 <p className="text-ocean-200 font-semibold">
                   💡 This website was built in 48 hours - if you can't find any defects, 
                   imagine the quality we'll deliver for your project!
@@ -1436,17 +1487,17 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Common questions about our services and development process
             </p>
           </motion.div>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             {[
               {
                 question: "What technologies do you use?",
@@ -1471,10 +1522,10 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-2xl p-6 float-element"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-2xl p-6 float-element hover:scale-105 transition-all duration-300"
               >
                 <h3 className="text-xl font-semibold text-white mb-4">{faq.question}</h3>
-                <p className="text-white/80 leading-relaxed">{faq.answer}</p>
+                <p className="text-white/90 leading-relaxed">{faq.answer}</p>
               </motion.div>
             ))}
           </div>
@@ -1490,12 +1541,12 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-6 pb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 ocean-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 ocean-gradient" style={{ lineHeight: '2.2', paddingBottom: '0.5rem' }}>
               Get In Touch
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Ready to transform your business? Let's discuss your digital transformation journey.
             </p>
           </motion.div>
@@ -1507,7 +1558,7 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="ocean-glass rounded-3xl p-8"
+              className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-8"
             >
               <h3 className="text-2xl font-bold text-white mb-8 text-center">Send us a Message</h3>
               
@@ -1517,7 +1568,7 @@ function App() {
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-white/80 text-sm font-medium mb-2">
+                    <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">
                       Full Name *
                     </label>
                     <input
@@ -1526,7 +1577,7 @@ function App() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                      className={`w-full px-4 py-3 bg-white/15 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-ocean-400/50 focus:border-ocean-400/50 shadow-lg focus:shadow-xl transition-all duration-300 ${
                         formErrors.name 
                           ? 'border-red-400 focus:ring-red-400' 
                           : 'border-white/20 focus:ring-ocean-400'
@@ -1541,7 +1592,7 @@ function App() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-2">
+                    <label htmlFor="email" className="block text-white/90 text-sm font-medium mb-2">
                       Email Address *
                     </label>
                     <input
@@ -1550,7 +1601,7 @@ function App() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                      className={`w-full px-4 py-3 bg-white/15 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-ocean-400/50 focus:border-ocean-400/50 shadow-lg focus:shadow-xl transition-all duration-300 ${
                         formErrors.email 
                           ? 'border-red-400 focus:ring-red-400' 
                           : 'border-white/20 focus:ring-ocean-400'
@@ -1567,7 +1618,7 @@ function App() {
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-white/80 text-sm font-medium mb-2">
+                  <label htmlFor="phone" className="block text-white/90 text-sm font-medium mb-2">
                     Phone Number
                   </label>
                   <input
@@ -1576,13 +1627,13 @@ function App() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/15 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-ocean-400/50 focus:border-ocean-400/50 shadow-lg focus:shadow-xl transition-all duration-300"
                     placeholder="+91 98765 43210"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="service" className="block text-white/80 text-sm font-medium mb-2">
+                  <label htmlFor="service" className="block text-white/90 text-sm font-medium mb-2">
                     Service Interested In
                   </label>
                   <select
@@ -1590,7 +1641,7 @@ function App() {
                     name="service"
                     value={formData.service}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/15 border border-white/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-ocean-400/50 focus:border-ocean-400/50 shadow-lg focus:shadow-xl transition-all duration-300"
                   >
                     <option value="" className="bg-deep-900 text-white">Select a service</option>
                     <option value="web-development" className="bg-deep-900 text-white">Web Development</option>
@@ -1603,7 +1654,7 @@ function App() {
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-white/80 text-sm font-medium mb-2">
+                  <label htmlFor="message" className="block text-white/90 text-sm font-medium mb-2">
                     Project Details *
                   </label>
                   <textarea
@@ -1612,7 +1663,7 @@ function App() {
                     rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 resize-none ${
+                    className={`w-full px-4 py-3 bg-white/15 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-ocean-400/50 focus:border-ocean-400/50 shadow-lg focus:shadow-xl transition-all duration-300 resize-none ${
                       formErrors.message 
                         ? 'border-red-400 focus:ring-red-400' 
                         : 'border-white/20 focus:ring-ocean-400'
@@ -1629,12 +1680,12 @@ function App() {
                 
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
-                  <div className="bg-green-500/20 border border-green-400/30 rounded-xl p-4 text-center">
-                    <div className="flex items-center justify-center space-x-2 text-green-400">
+                  <div className="bg-ocean-500/20 border border-ocean-400/30 rounded-xl p-4 text-center">
+                    <div className="flex items-center justify-center space-x-2 text-ocean-300">
                       <span className="text-xl">✅</span>
                       <span className="font-semibold">Message sent successfully!</span>
                     </div>
-                    <p className="text-green-300 text-sm mt-1">
+                    <p className="text-ocean-200 text-sm mt-1">
                       We'll get back to you within 24 hours.
                     </p>
                   </div>
@@ -1681,42 +1732,42 @@ function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-3xl p-6"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6"
               >
                 <h3 className="text-xl font-bold text-white mb-6 text-center">Get In Touch</h3>
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center space-x-3 p-3 deep-glass rounded-xl">
-                    <div className="w-10 h-10 bg-gradient-to-r from-ocean-500 to-turquoise-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-r from-ocean-600 to-ocean-700 rounded-lg flex items-center justify-center">
                       <Mail className="text-white" size={18} />
                     </div>
                     <div>
                       <h4 className="text-white font-semibold text-sm">Email</h4>
-                      <a href="mailto:seawavessolutions@gmail.com" className="text-ocean-300 hover:text-ocean-200 transition-colors text-sm">
+                      <a href="mailto:seawavessolutions@gmail.com" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
                         seawavessolutions@gmail.com
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-center space-x-3 p-3 deep-glass rounded-xl">
-                    <div className="w-10 h-10 bg-gradient-to-r from-turquoise-500 to-foam-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-lg flex items-center justify-center">
                       <Phone className="text-white" size={18} />
                     </div>
                     <div>
                       <h4 className="text-white font-semibold text-sm">Phone</h4>
-                      <a href="tel:+919443124106" className="text-ocean-300 hover:text-ocean-200 transition-colors text-sm">
+                      <a href="tel:+919791967710" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
                         +91 97919 67710
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-center space-x-3 p-3 deep-glass rounded-xl">
-                    <div className="w-10 h-10 bg-gradient-to-r from-foam-500 to-coral-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-r from-ocean-500 to-ocean-600 rounded-lg flex items-center justify-center">
                       <MessageCircle className="text-white" size={18} />
                     </div>
                     <div>
                       <h4 className="text-white font-semibold text-sm">WhatsApp</h4>
-                      <a href="https://wa.me/919443124106" target="_blank" rel="noopener noreferrer" className="text-ocean-300 hover:text-ocean-200 transition-colors text-sm">
+                      <a href="https://wa.me/919791967710" target="_blank" rel="noopener noreferrer" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
                         Chat with us instantly
                       </a>
                     </div>
@@ -1732,7 +1783,7 @@ function App() {
                     Send Email
                   </a>
                   <a
-                    href="tel:+919443124106"
+                    href="tel:+919791967710"
                     className="btn-deep flex items-center justify-center px-3 py-2 rounded-lg font-medium text-xs"
                   >
                     <Phone className="mr-1" size={14} />
@@ -1747,12 +1798,12 @@ function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
-                className="ocean-glass rounded-3xl p-6"
+                className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6"
               >
                 <h3 className="text-xl font-bold text-white mb-6 text-center">Our Location</h3>
                 <div className="rounded-2xl overflow-hidden shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.123456789!2d79.375!3d10.958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5531234567890%3A0x1234567890abcdef!2sKumbakonam%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15721.488!2d79.375!3d10.958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a55312b1b4b3f8d%3A0x3b1b4f8a9c2d5e6f!2sKumbakonam%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1640995200000"
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
@@ -1765,7 +1816,7 @@ function App() {
               ></iframe>
             </div>
                 <div className="mt-4 text-center">
-                  <p className="text-white/80 text-xs">
+                  <p className="text-white/90 text-xs">
                     <MapPin className="inline mr-1" size={14} />
                     Kumbakonam, Tamil Nadu, India
                   </p>
@@ -1777,25 +1828,25 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-ocean-500/20">
+      <footer className="py-12 px-4 border-t border-ocean-500/20 bg-ocean-900/30" role="contentinfo">
         <div className="max-w-6xl mx-auto text-center">
           <h3 className="text-2xl font-bold ocean-gradient mb-4">Sea Waves Solutions</h3>
-          <p className="text-ocean-300 mb-6">Transforming Ideas into Reality</p>
+          <p className="text-ocean-200 mb-6">Transforming Ideas into Reality</p>
           <div className="flex justify-center space-x-6 mb-6">
-            <a href="tel:+919443124106" className="text-ocean-400 hover:text-ocean-300 transition-colors">
+            <a href="tel:+919791967710" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <Phone size={24} />
             </a>
-            <a href="mailto:seawavessolutions@gmail.com" className="text-turquoise-400 hover:text-turquoise-300 transition-colors">
+            <a href="mailto:seawavessolutions@gmail.com" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <Mail size={24} />
             </a>
-            <a href="https://wa.me/919443124106" target="_blank" rel="noopener noreferrer" className="text-foam-400 hover:text-foam-300 transition-colors">
+            <a href="https://wa.me/919791967710" target="_blank" rel="noopener noreferrer" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <MessageCircle size={24} />
             </a>
-            <a href="#" className="text-coral-400 hover:text-coral-300 transition-colors">
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-ocean-300 hover:text-ocean-200 transition-colors cursor-pointer">
               <MapPin size={24} />
             </a>
           </div>
-          <p className="text-ocean-300/60 text-sm">
+          <p className="text-ocean-200/60 text-sm">
             © 2025 Sea Waves Solutions. All Rights Reserved.
           </p>
         </div>
@@ -1808,7 +1859,7 @@ function App() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-ocean-500 to-turquoise-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-ocean-600 to-ocean-700 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
           aria-label="Back to top"
         >
           <ChevronDown className="text-white rotate-180" size={20} />
