@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Sea Waves Solutions - #1 Best Project Center & CSE/IT Internship Company in Kumbakonam | Best College Project Center</title>
@@ -57,7 +58,7 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- DNS Prefetch for External Resources -->
     <link rel="dns-prefetch" href="//www.google.com">
@@ -68,6 +69,11 @@
     <!-- Resource Hints for Better Performance -->
     <link rel="preload" href="/src/main.tsx" as="script">
     <link rel="preload" href="/src/index.css" as="style">
+    <link rel="preload" href="/src/App.tsx" as="script">
+    
+    <!-- Critical Resource Hints -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"></noscript>
     
     <!-- Critical CSS Inline (for above-the-fold content) -->
     <style>

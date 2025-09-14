@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { 
   Menu, 
   X, 
@@ -14,6 +14,9 @@ import {
   Smartphone,
   ChevronDown
 } from 'lucide-react'
+
+// Lazy load heavy components
+const LoadingSpinner = lazy(() => import('./components/LoadingSpinner'))
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -109,6 +112,8 @@ function App() {
     const element = document.getElementById(actualId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      // Focus the section for screen readers
+      element.focus({ preventScroll: true })
     }
     setIsMenuOpen(false)
   }
@@ -194,36 +199,11 @@ function App() {
       <div className="sr-only">Build: {new Date().toISOString()}</div>
       {/* Loading Screen */}
       {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
-          className="fixed inset-0 bg-deep-ocean z-50 flex items-center justify-center"
-        >
-          <div className="text-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 border-4 border-ocean-400 border-t-transparent rounded-full mx-auto mb-4"
-            ></motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl font-bold ocean-gradient mb-2"
-            >
-              Sea Waves Solutions
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white/90"
-            >
-              Loading your digital experience...
-            </motion.p>
-          </div>
-        </motion.div>
+        <Suspense fallback={<div className="fixed inset-0 bg-deep-ocean z-50 flex items-center justify-center">
+          <div className="w-16 h-16 border-4 border-ocean-400 border-t-transparent rounded-full animate-spin"></div>
+        </div>}>
+          <LoadingSpinner />
+        </Suspense>
       )}
 
       {/* Welcome & Challenge Popup */}
@@ -549,7 +529,7 @@ function App() {
 
       {/* Hero Section */}
       <main>
-        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-16" tabIndex={-1} aria-label="Hero section - Transforming Ideas into Reality">
         {/* Animated Background Layers */}
         <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/30 via-ocean-700/20 to-ocean-800/15"></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-deep-900/50 via-transparent to-ocean-800/30"></div>
@@ -621,8 +601,9 @@ function App() {
                   <button 
                     onClick={() => scrollToSection('contact')}
                     className="btn-ocean px-6 py-3 rounded-xl font-semibold text-base transform hover:scale-105 transition-all duration-300 shadow-xl flex items-center space-x-2"
+                    aria-label="Get website in 48 hours - Contact us"
                   >
-                    <span>⚡</span>
+                    <span aria-hidden="true">⚡</span>
                     <span>Get Website in 48 Hours</span>
               </button>
                   <button 
@@ -1668,6 +1649,7 @@ function App() {
                 className="rounded-2xl"
                 title="Sea Waves Solutions Location - Kumbakonam, Tamil Nadu"
                 aria-label="Interactive map showing Sea Waves Solutions location in Kumbakonam, Tamil Nadu"
+                role="img"
               ></iframe>
             </div>
                 <div className="mt-4 text-center">
