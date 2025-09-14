@@ -190,6 +190,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-deep-ocean relative">
+      {/* Build timestamp for cache busting */}
+      <div className="sr-only">Build: {new Date().toISOString()}</div>
       {/* Loading Screen */}
       {isLoading && (
         <motion.div
