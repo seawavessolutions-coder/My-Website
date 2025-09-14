@@ -562,7 +562,7 @@ function App() {
           <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-ocean-300/25 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto w-full">
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -570,7 +570,7 @@ function App() {
             className="relative"
           >
             {/* Main Content Card */}
-            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden max-w-4xl mx-auto">
+            <div className="ocean-glass shadow-2xl hover:shadow-3xl rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden max-w-2xl mx-auto">
               {/* Shimmer Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer"></div>
               
@@ -582,7 +582,7 @@ function App() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                   className="mb-8"
                 >
-                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-white" style={{ lineHeight: '1.2' }}>
+                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white" style={{ lineHeight: '1.2' }}>
                      <span className="block mb-2">Transforming Ideas</span>
                      <span className="block text-ocean-200">into Reality</span>
                    </h1>
@@ -592,7 +592,7 @@ function App() {
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ duration: 0.8, delay: 0.6 }}
-                   className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed"
+                   className="text-sm sm:text-base md:text-lg text-white/90 mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed"
                  >
                    Professional web development and digital solutions
                  </motion.p>
@@ -601,13 +601,13 @@ function App() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
-                  className="bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 border border-ocean-400/30 rounded-2xl p-6 mb-6 max-w-2xl mx-auto"
+                  className="bg-gradient-to-r from-ocean-500/20 to-ocean-600/20 border border-ocean-400/30 rounded-2xl p-4 mb-4 max-w-xl mx-auto"
                 >
-                  <div className="flex items-center justify-center space-x-3 mb-2">
-                    <span className="text-2xl">⚡</span>
-                    <h3 className="text-xl font-bold text-white">Lightning Fast Delivery</h3>
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <span className="text-xl">⚡</span>
+                    <h3 className="text-lg font-bold text-white">Lightning Fast Delivery</h3>
                   </div>
-                  <p className="text-ocean-200 text-lg font-semibold">
+                  <p className="text-ocean-200 text-sm font-semibold">
                     Simple websites live within 48 hours!
                   </p>
                 </motion.div>
@@ -616,18 +616,18 @@ function App() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
-                  className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-2xl mx-auto"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto"
                 >
                   <button 
                     onClick={() => scrollToSection('contact')}
-                    className="btn-ocean px-10 py-4 rounded-xl font-semibold text-lg transform hover:scale-105 transition-all duration-300 shadow-xl flex items-center space-x-2"
+                    className="btn-ocean px-6 py-3 rounded-xl font-semibold text-base transform hover:scale-105 transition-all duration-300 shadow-xl flex items-center space-x-2"
                   >
                     <span>⚡</span>
                     <span>Get Website in 48 Hours</span>
               </button>
                   <button 
                     onClick={() => scrollToSection('services')}
-                    className="btn-glass px-10 py-4 rounded-xl font-semibold text-lg transform hover:scale-105 transition-all duration-300"
+                    className="btn-glass px-6 py-3 rounded-xl font-semibold text-base transform hover:scale-105 transition-all duration-300"
                   >
                     View Services
               </button>
