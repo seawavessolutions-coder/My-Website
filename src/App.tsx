@@ -421,7 +421,7 @@ function App() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'deep-glass' : 'bg-transparent'
       }`} role="navigation" aria-label="Main navigation">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo and Company Name */}
             <div className="flex items-center space-x-3 flex-shrink-0">
@@ -475,13 +475,13 @@ function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-shrink">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-3 flex-shrink">
               {[
                 { name: 'Home', section: 'home' },
                 { name: 'About', section: 'about' },
                 { name: 'Services', section: 'services' },
                 { name: 'Internship', section: 'internship' },
-                { name: 'Speed & Example', section: 'speed' },
+                { name: 'Speed', section: 'speed' },
                 { name: 'Quality', section: 'quality' },
                 { name: 'Why Us', section: 'whyus' },
                 { name: 'FAQ', section: 'faq' },
@@ -490,9 +490,9 @@ function App() {
               <button 
                   key={item.name}
                   onClick={() => scrollToSection(item.section)}
-                  className="transition-all duration-300 relative group px-3 py-2 rounded-lg text-ocean-200 hover:text-ocean-300 hover:bg-white/10 text-sm"
+                  className="transition-all duration-300 relative group px-2 py-1.5 rounded-lg text-ocean-200 hover:text-ocean-300 hover:bg-white/10 text-xs xl:text-sm"
                 >
-                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="font-medium">{item.name}</span>
                   <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-ocean-400 transition-all duration-300 group-hover:w-full"></span>
               </button>
               ))}
@@ -524,7 +524,7 @@ function App() {
               { name: 'About', section: 'about' },
               { name: 'Services', section: 'services' },
               { name: 'Internship', section: 'internship' },
-              { name: 'Speed & Example', section: 'speed' },
+              { name: 'Speed', section: 'speed' },
               { name: 'Quality', section: 'quality' },
               { name: 'Why Us', section: 'whyus' },
               { name: 'FAQ', section: 'faq' },
