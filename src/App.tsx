@@ -40,54 +40,58 @@ function App() {
   const [showChallengePopup, setShowChallengePopup] = useState(false)
 
   useEffect(() => {
-    // Loading effect
+    // Loading effect - reduced for better performance
     const loadingTimer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 1000)
 
-    // Show challenge popup after loading
+    // Show challenge popup after loading - delayed for better UX
     const challengeTimer = setTimeout(() => {
       setShowChallengePopup(true)
-    }, 2500)
+    }, 1500)
 
-    let timeoutId: number
+    let lastScrollY = 0
+    let ticking = false
     
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-      setShowBackToTop(window.scrollY > 300)
+      lastScrollY = window.scrollY
       
-      // Calculate scroll progress
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPercent = (scrollTop / docHeight) * 100
-      setScrollProgress(scrollPercent)
-      
-      // Debounce scroll detection to prevent flickering
-      clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => {
-        // Only detect active section if not manually scrolling
-        if (!isManualScroll) {
-          const sections = ['home', 'about', 'speed', 'services', 'internship', 'whyus', 'portfolio', 'quality', 'faq', 'contact']
-          const scrollPosition = window.scrollY + 150
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setIsScrolled(lastScrollY > 50)
+          setShowBackToTop(lastScrollY > 300)
           
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const element = document.getElementById(sections[i])
-            if (element && element.offsetTop <= scrollPosition) {
-              setActiveSection(sections[i])
-              break
+          // Calculate scroll progress
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight
+          const scrollPercent = (lastScrollY / docHeight) * 100
+          setScrollProgress(scrollPercent)
+          
+          // Only detect active section if not manually scrolling
+          if (!isManualScroll) {
+            const sections = ['home', 'about', 'speed', 'services', 'internship', 'whyus', 'portfolio', 'quality', 'faq', 'contact']
+            const scrollPosition = lastScrollY + 150
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+              const element = document.getElementById(sections[i])
+              if (element && element.offsetTop <= scrollPosition) {
+                setActiveSection(sections[i])
+                break
+              }
             }
           }
-        }
-      }, 50)
+          
+          ticking = false
+        })
+        ticking = true
+      }
     }
     
     // Set initial active section
     handleScroll()
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      clearTimeout(timeoutId)
       clearTimeout(loadingTimer)
       clearTimeout(challengeTimer)
     }
@@ -534,12 +538,10 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-ocean-600/30 via-ocean-700/20 to-ocean-800/15"></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-deep-900/50 via-transparent to-ocean-800/30"></div>
         
-        {/* Floating Elements */}
+        {/* Floating Elements - Reduced for performance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-20 h-20 bg-ocean-400/25 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-ocean-400/25 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
-          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-ocean-500/25 rounded-full blur-xl animate-float" style={{animationDelay: '4s'}}></div>
-          <div className="absolute bottom-20 right-1/3 w-16 h-16 bg-ocean-300/25 rounded-full blur-lg animate-float" style={{animationDelay: '6s'}}></div>
+          <div className="absolute bottom-40 right-1/4 w-24 h-24 bg-ocean-500/25 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
@@ -609,6 +611,7 @@ function App() {
                   <button 
                     onClick={() => scrollToSection('services')}
                     className="btn-glass px-6 py-3 rounded-xl font-semibold text-base transform hover:scale-105 transition-all duration-300"
+                    aria-label="View our services and offerings"
                   >
                     View Services
               </button>
@@ -1419,10 +1422,12 @@ function App() {
                           : 'border-white/20 focus:ring-ocean-400'
                       }`}
                       placeholder="Your full name"
+                      aria-describedby={formErrors.name ? "name-error" : undefined}
+                      aria-invalid={!!formErrors.name}
                     />
                     {formErrors.name && (
-                      <p className="text-red-400 text-sm mt-1 flex items-center">
-                        <span className="mr-1">⚠️</span>
+                      <p id="name-error" className="text-red-400 text-sm mt-1 flex items-center">
+                        <span className="mr-1" aria-hidden="true">⚠️</span>
                         {formErrors.name}
                       </p>
                     )}

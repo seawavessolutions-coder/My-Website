@@ -63,7 +63,7 @@
   
   /* Sea Waves Buttons */
   .btn-ocean {
-    @apply bg-gradient-to-r from-ocean-600 to-ocean-500 hover:from-ocean-700 hover:to-ocean-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-ocean-500/25;
+    @apply bg-gradient-to-r from-ocean-600 to-ocean-500 hover:from-ocean-700 hover:to-ocean-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-ocean-500/25 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:ring-offset-2 focus:ring-offset-deep-900;
   }
   
   .btn-deep {
@@ -79,7 +79,7 @@
   }
   
   .btn-glass {
-    @apply bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 backdrop-blur-md border border-white/30 hover:border-ocean-300/50;
+    @apply bg-white/25 hover:bg-white/35 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 backdrop-blur-md border border-white/40 hover:border-ocean-300/60 focus:outline-none focus:ring-2 focus:ring-ocean-400 focus:ring-offset-2 focus:ring-offset-deep-900;
   }
   
   /* Ocean Background Gradients */

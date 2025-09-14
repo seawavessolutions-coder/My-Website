@@ -18,11 +18,17 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug']
       }
-    }
+    },
+    chunkSizeWarningLimit: 1000,
+    target: 'es2015'
   },
   server: {
     port: 3000
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
   }
 })
