@@ -1595,10 +1595,18 @@ function App() {
                       <Phone className="text-white" size={18} />
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold text-sm">Phone</h4>
-                      <a href="tel:+919791967710" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
-                        +91 97919 67710
-                      </a>
+                      <h4 className="text-white font-semibold text-sm">Phone Numbers</h4>
+                      <div className="space-y-1">
+                        <a href="tel:+919443124106" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm block">
+                          +91 94431 24106
+                        </a>
+                        <a href="tel:+919791646110" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm block">
+                          +91 97916 46110
+                        </a>
+                        <a href="tel:+914352411710" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm block">
+                          +91 435 2411710 (Landline)
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -1608,7 +1616,7 @@ function App() {
                     </div>
                     <div>
                       <h4 className="text-white font-semibold text-sm">WhatsApp</h4>
-                      <a href="https://wa.me/919791967710" target="_blank" rel="noopener noreferrer" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
+                      <a href="https://wa.me/919443124106" target="_blank" rel="noopener noreferrer" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm">
                         Chat with us instantly
                       </a>
                     </div>
@@ -1624,7 +1632,7 @@ function App() {
                     Send Email
                   </a>
                   <a
-                    href="tel:+919791967710"
+                    href="tel:+919443124106"
                     className="btn-deep flex items-center justify-center px-3 py-2 rounded-lg font-medium text-xs"
                   >
                     <Phone className="mr-1" size={14} />
@@ -1675,13 +1683,13 @@ function App() {
           <h3 className="text-2xl font-bold ocean-gradient mb-4">Sea Waves Solutions</h3>
           <p className="text-ocean-200 mb-6">Transforming Ideas into Reality</p>
           <div className="flex justify-center space-x-6 mb-6">
-            <a href="tel:+919791967710" className="text-ocean-300 hover:text-ocean-200 transition-colors">
+            <a href="tel:+919443124106" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <Phone size={24} />
             </a>
             <a href="mailto:seawavessolutions@gmail.com" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <Mail size={24} />
             </a>
-            <a href="https://wa.me/919791967710" target="_blank" rel="noopener noreferrer" className="text-ocean-300 hover:text-ocean-200 transition-colors">
+            <a href="https://wa.me/919443124106" target="_blank" rel="noopener noreferrer" className="text-ocean-300 hover:text-ocean-200 transition-colors">
               <MessageCircle size={24} />
             </a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-ocean-300 hover:text-ocean-200 transition-colors cursor-pointer">
