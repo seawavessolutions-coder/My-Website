@@ -17,14 +17,14 @@
     <meta name="bingbot" content="index, follow" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://seawavessolutions.com" />
+    <link rel="canonical" href="https://seawavessolutions.in" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://seawavessolutions.com" />
+    <meta property="og:url" content="https://seawavessolutions.in" />
     <meta property="og:title" content="Sea Waves Solutions - #1 CSE/IT Internship & College Project Company in Kumbakonam" />
     <meta property="og:description" content="Leading CSE/IT internship and college project company in Kumbakonam. We offer web development internships, React/Angular projects, mobile app development training for students." />
-    <meta property="og:image" content="https://seawavessolutions.com/og-image.jpg" />
+    <meta property="og:image" content="https://seawavessolutions.in/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Sea Waves Solutions" />
@@ -32,10 +32,10 @@
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://seawavessolutions.com" />
+    <meta property="twitter:url" content="https://seawavessolutions.in" />
     <meta property="twitter:title" content="Sea Waves Solutions - #1 CSE/IT Internship & College Project Company" />
     <meta property="twitter:description" content="Leading CSE/IT internship and college project company in Kumbakonam. We offer web development internships, React/Angular projects, mobile app development training for students." />
-    <meta property="twitter:image" content="https://seawavessolutions.com/twitter-image.jpg" />
+    <meta property="twitter:image" content="https://seawavessolutions.in/twitter-image.jpg" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#0ea5e9" />
@@ -113,8 +113,8 @@
       "@type": "Organization",
       "name": "Sea Waves Solutions",
       "alternateName": "Sea Waves Tech Solutions",
-      "url": "https://seawavessolutions.com",
-      "logo": "https://seawavessolutions.com/logo.png",
+      "url": "https://seawavessolutions.in",
+      "logo": "https://seawavessolutions.in/logo.png",
       "description": "Leading web development company in Kumbakonam, Tamil Nadu. We deliver websites in 48 hours with React, Angular, Node.js, React Native. Professional web design, mobile apps, e-commerce solutions.",
       "foundingDate": "2025",
       "founder": {
@@ -210,11 +210,11 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://seawavessolutions.com/#organization",
+      "@id": "https://seawavessolutions.in/#organization",
       "name": "Sea Waves Solutions",
-      "image": "https://seawavessolutions.com/logo.png",
+      "image": "https://seawavessolutions.in/logo.png",
       "description": "Professional web development company in Kumbakonam specializing in React, Angular, Node.js development with 48-hour delivery guarantee.",
-      "url": "https://seawavessolutions.com",
+      "url": "https://seawavessolutions.in",
       "telephone": "+91-94431-24106",
       "email": "seawavessolutions@gmail.com",
       "address": {
@@ -254,16 +254,16 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Sea Waves Solutions",
-      "url": "https://seawavessolutions.com",
+      "url": "https://seawavessolutions.in",
       "description": "Leading CSE/IT internship and college project company in Kumbakonam. We offer web development internships, React/Angular projects, mobile app development training for students.",
       "publisher": {
         "@type": "Organization",
         "name": "Sea Waves Solutions",
-        "url": "https://seawavessolutions.com"
+        "url": "https://seawavessolutions.in"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://seawavessolutions.com/search?q={search_term_string}",
+        "target": "https://seawavessolutions.in/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -276,7 +276,7 @@
       "@type": "EducationalOrganization",
       "name": "Sea Waves Solutions",
       "alternateName": "Sea Waves Tech Academy",
-      "url": "https://seawavessolutions.com",
+      "url": "https://seawavessolutions.in",
       "description": "Leading CSE/IT internship and training company in Kumbakonam, Tamil Nadu. We provide practical training in web development, mobile app development, and software engineering for students.",
       "address": {
         "@type": "PostalAddress",
@@ -355,7 +355,7 @@
       "hiringOrganization": {
         "@type": "Organization",
         "name": "Sea Waves Solutions",
-        "url": "https://seawavessolutions.com"
+        "url": "https://seawavessolutions.in"
       },
       "jobLocation": {
         "@type": "Place",
@@ -393,6 +393,56 @@
     
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        page_title: 'Sea Waves Solutions - Web Development Company',
+        page_location: window.location.href,
+        custom_map: {
+          'custom_parameter_1': 'service_type',
+          'custom_parameter_2': 'user_type'
+        }
+      });
+      
+      // Track page views for SPA
+      function trackPageView() {
+        gtag('config', 'G-XXXXXXXXXX', {
+          page_path: window.location.pathname + window.location.search,
+          page_title: document.title
+        });
+      }
+      
+      // Track custom events
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, parameters);
+      }
+      
+      // Track form submissions
+      function trackFormSubmission(formType) {
+        gtag('event', 'form_submit', {
+          event_category: 'engagement',
+          event_label: formType,
+          value: 1
+        });
+      }
+      
+      // Track button clicks
+      function trackButtonClick(buttonName) {
+        gtag('event', 'click', {
+          event_category: 'engagement',
+          event_label: buttonName,
+          value: 1
+        });
+      }
+    </script>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE" />
     
     <!-- Performance Optimization Script -->
     <script>
