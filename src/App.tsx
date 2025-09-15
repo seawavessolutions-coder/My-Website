@@ -1604,7 +1604,7 @@ function App() {
                           +91 97916 46110
                         </a>
                         <a href="tel:+914352411710" className="text-ocean-200 hover:text-ocean-200 transition-colors text-sm block">
-                          +91 435 2411710 (Landline)
+                          0435 - 2411710 (Landline)
                         </a>
                       </div>
                     </div>
